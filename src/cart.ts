@@ -8,7 +8,9 @@ export default class Cart {
     }
 
     del(id: number): void {
-        this._items = this._items.filter((item) => item.id != id);
+        this._items = this._items.filter(
+            (item: Buyable) => item.id != id
+        );
     }
 
     get items(): Buyable[] {
@@ -16,7 +18,9 @@ export default class Cart {
     }
 
     sumPrice(discount: number = 0): number {
-        let sum = this.items.reduce((sum, item) => sum + item.price, 0)
+        let sum: number = this.items.reduce(
+            (sum: number, item: Buyable) => sum + item.price, 0
+        )
         if (discount > 0) {
             sum = sum * (100 - discount) / 100;
         }
